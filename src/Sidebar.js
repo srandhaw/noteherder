@@ -2,40 +2,50 @@ import React from 'react'
 import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
+import { StyleSheet, css } from 'aphrodite'
 
 class Sidebar extends React.Component{
+   
+    
     render(){
         return(
-            <div className = "Sidebar"  style={styles.sidebar}>
+            <nav className={css(styles.sidebar)}>
 
-             <div className="logo" style={styles.logo}>
-        <img src={quill} alt="Noteherder" style={styles.logoImg} />
+             <div className={css(styles.logo)}>
+        <img src={quill} alt="Noteherder" className={css(styles.logoImg)} />
       </div>
 
-      <a href="/notes">
+      <a 
+        href="/notes"
+        className={css(styles.newNote)}>
         <img
           src={newHover}
           alt="New note"
+          className={css(styles.newNoteImg)}
         />
         <img
           src={newIcon}
           alt="New note"
+          className={css(styles.newNoteImg, styles.newNoteImgHover)}
         />
       </a>
 
-<div className="SignOut">
-        <button>
-          <i className="fa fa-sign-out"></i>
+<div className={css(styles.signOut)}>
+        <button className={css(styles.button)}>
+        <i
+            className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`}
+            title="sign out"
+          ></i>
         </button>
       </div>
-            </div>
+            </nav>
         )
     }
 }
 
 export default Sidebar
 
-const styles = {
+const styles = StyleSheet.create({
     sidebar: {
         width: '6rem',
         backgroundColor: '#f3f3f3',
@@ -54,5 +64,41 @@ const styles = {
         logoImg: {
         width: '3rem',
         paddingLeft: '0.4rem',
-      }
-}
+      },
+
+      newNote: {
+        marginTop: '2rem',
+        position: 'relative',
+        width: '4rem',
+      },
+
+      newNoteImg: {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        transition: 'opacity 0.25s ease-in-out',
+      },
+
+      signOut: {
+        position: 'absolute',
+        bottom: '1rem',
+      },
+
+      buttonIcon: {
+        fontSize: '2rem',
+      },
+
+      button: {
+        backgroundColor: 'transparent',
+        border: '0',
+        color: '#008bf8',
+        cursor: 'pointer',
+        outline: 'none',
+      },
+
+      newNoteImgHover: {
+        ':hover': {
+          opacity: 0,
+        },
+      },
+})
