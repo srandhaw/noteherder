@@ -17,7 +17,11 @@ class Sidebar extends React.Component{
 
       <a 
         href="/notes"
-        className={css(styles.newNote)}>
+        className={css(styles.newNote)}
+        onClick={(ev) => {
+          ev.preventDefault()
+          this.props.resetCurrentNote()
+        }}>
         <img
           src={newHover}
           alt="New note"
