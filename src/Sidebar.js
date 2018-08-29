@@ -33,7 +33,7 @@ class Sidebar extends React.Component{
 <div className={css(styles.signOut)}>
         <button className={css(styles.button)}>
         <i
-            className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`}
+            className={`fas fa-sign-out-alt`}
             title="sign out"
           ></i>
         </button>
@@ -84,9 +84,7 @@ const styles = StyleSheet.create({
         bottom: '1rem',
       },
 
-      buttonIcon: {
-        fontSize: '2rem',
-      },
+     
 
       button: {
         backgroundColor: 'transparent',
@@ -94,6 +92,7 @@ const styles = StyleSheet.create({
         color: '#008bf8',
         cursor: 'pointer',
         outline: 'none',
+        fontSize: '2rem',
       },
 
       newNoteImgHover: {
