@@ -13,7 +13,7 @@ props.saveNote(note)
   return (
     <div className="NoteForm">
       <div className="form-actions">
-        <button type="button">
+        <button type="button" onClick={props.deleteNote}>
           <i className="far fa-trash-alt"></i>
         </button>
       </div>
