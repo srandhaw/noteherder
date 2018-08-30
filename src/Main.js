@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
+import base from './base'
 
 class Main extends React.Component{
     constructor() {
@@ -20,6 +21,18 @@ class Main extends React.Component{
           title: '',
           body: '',
         }
+      }
+
+      componentDidMount(){
+        this.notesRef = base.syncState('notes', {
+          context: this,
+          state: 'notes',
+          asArray: true,
+        })
+      }
+
+      componentWillUnmount() {
+        base.removeBinding(this.notesRef)
       }
 
       resetCurrentNote = () => {
