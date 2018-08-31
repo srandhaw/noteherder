@@ -9,6 +9,7 @@ class App extends Component {
   }
    handleAuth = () => {
     this.setState({ uid: 'dstrus' })
+
   }
    signedIn = () => {
     return this.state.uid

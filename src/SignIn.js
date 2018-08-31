@@ -7,9 +7,9 @@ import quill from './quill.svg'
 const SignIn = (props) => {
     return(
         <div className="SignIn">
-      <header className="Header" >
+      <header className="Header" style = {styles.header}>
         <img src = {quill} alt="" style = {styles.quilll}/>
-        <span className="title">Noteherder</span>
+        <span className="title" style = {styles.title}>Noteherder</span>
       </header>
       <main>
         <h3>Hey, Nerd! You Like Notes?</h3>
@@ -33,7 +33,26 @@ const SignIn = (props) => {
 export default SignIn
 
 const styles = {
-    quilll: {
-        width: '3rem',
-    }
+  header:{
+    margin: '2rem',
+    height: '50%',
+    padding: '10% 0 0',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+    
+  quilll: {
+    width: '10rem',
+    color: '#ffffff',
+    backgroundColor: 'transparent'
+  },
+
+  title: {
+    fontFamily: "Fauna One",
+    color: '#ffffff',
+    fontSize: '5rem',
+    letterSpacing: '15px',
+    textTransform: 'Uppercase',
+  }
 }
