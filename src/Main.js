@@ -24,7 +24,7 @@ class Main extends React.Component{
       }
 
       componentDidMount(){
-        this.notesRef = base.syncState('notes', {
+        this.notesRef = base.syncState(`${this.props.uid}`, {
           context: this,
           state: 'notes',
           asArray: true,

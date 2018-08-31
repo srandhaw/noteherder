@@ -20,8 +20,8 @@ class App extends Component {
   })
   }
 
-   handleAuth = () => {
-    this.setState({ uid: 'dstrus' })
+   handleAuth = (user) => {
+    this.setState({ uid: user.uid })
 
   }
    signedIn = () => {
@@ -37,7 +37,7 @@ class App extends Component {
       {
         this.signedIn()
         ? 
-        <Main signOut = {this.signOut}/> 
+        <Main signOut = {this.signOut} uid={this.state.uid}/> 
         :
          <SignIn handleAuth ={this.handleAuth}/>
       }
