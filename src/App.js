@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './Main'
+import { auth } from './base'
 import SignIn from './SignIn'
 
 class App extends Component {
   state = {
     uid: null,
   }
+
+  componentDidMount(){
+  auth.onAuthStateChanged(user =>{
+    if(user){
+      this.handleAuth(user)
+    }
+    else{
+      this.signOut()
+    }
+  })
+  }
+
    handleAuth = () => {
     this.setState({ uid: 'dstrus' })
 
@@ -16,6 +29,7 @@ class App extends Component {
   }
    signOut = () => {
     this.setState({ uid: null })
+    auth.signOut()
   }
   render() {
     return (
