@@ -10,7 +10,9 @@ class App extends Component {
   }
 
   componentDidMount(){
+
   auth.onAuthStateChanged(user =>{
+    
     if(user){
       this.handleAuth(user)
     }
@@ -22,7 +24,6 @@ class App extends Component {
 
    handleAuth = (user) => {
     this.setState({ uid: user.uid })
-
   }
    signedIn = () => {
     return this.state.uid
