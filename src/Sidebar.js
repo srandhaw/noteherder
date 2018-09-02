@@ -3,6 +3,7 @@ import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
 import { StyleSheet, css } from 'aphrodite'
+import { Link } from 'react-router-dom'
 
 class Sidebar extends React.Component{
    
@@ -15,13 +16,10 @@ class Sidebar extends React.Component{
         <img src={quill} alt="Noteherder" className={css(styles.logoImg)} />
       </div>
 
-      <a 
-        href="/notes"
+      <Link
+        to="/notes"
         className={css(styles.newNote)}
-        onClick={(ev) => {
-          ev.preventDefault()
-          this.props.resetCurrentNote()
-        }}>
+        >
         <img
           src={newHover}
           alt="New note"
@@ -32,7 +30,7 @@ class Sidebar extends React.Component{
           alt="New note"
           className={css(styles.newNoteImg, styles.newNoteImgHover)}
         />
-      </a>
+      </Link>
 
 <div className={css(styles.signOut)}>
         <button className={css(styles.button)} onClick = {this.props.signOut}>
