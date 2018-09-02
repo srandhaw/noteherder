@@ -3,6 +3,7 @@ import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
 import base from './base'
+import { Route, Switch } from 'react-router-dom'
 
 class Main extends React.Component{
     constructor() {
@@ -68,11 +69,40 @@ class Main extends React.Component{
       }
 
     render(){
+
+      const formProps = {
+        currentNote: this.state.currentNote,
+        saveNote: this.saveNote,
+        removeCurrentNote: this.removeCurrentNote,
+      }
+
         return(
             <div className="Main" style = {style}>
                         <Sidebar resetCurrentNote={this.resetCurrentNote}  signOut={this.props.signOut}/>
-                        <NoteList notes={this.state.notes} setCurrentNote = {this.setCurrentNote}/>
-                        <NoteForm currentNote={this.state.currentNote} saveNote = {this.saveNote} deleteNote = {this.deleteNote}/>
+                        <NoteList notes={this.state.notes} />
+
+       <Switch>
+
+          <Route
+            path="/notes/:id"
+            render={navProps => (
+              <NoteForm
+                {...formProps}
+                {...navProps}
+              />
+            )}
+          />
+
+          <Route
+            render={navProps => (
+              <NoteForm
+                {...formProps}
+                {...navProps}
+              />
+            )}
+          />
+
+       </Switch>
             </div>
         )
     }
