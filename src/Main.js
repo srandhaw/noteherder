@@ -37,21 +37,29 @@ class Main extends React.Component{
         let shouldRedirect = false
         const notes = [...this.state.notes]
 
+        const timestamp = Date.now()
+        note.updatedAt = timestamp
+
          if (!note.id) {
            
-          note.id = Date.now()
+          note.id = timestamp
           notes.push(note)
           shouldRedirect = true
-          console.log("true")
+        
 
         } else {
           const i = notes.findIndex(currentNote => currentNote.id === note.id)
           notes[i] = note
-          console.log("false")
+      
         }
+
+        notes.sort((a, b) => {
+          return b.updatedAt - a.updatedAt
+        })
+        
          this.setState({ notes })
 
-         console.log("should redirect " + shouldRedirect)
+         
 
          if (shouldRedirect) {
           this.props.history.push(`/notes/${note.id}`)
